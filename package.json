@@ -1,7 +1,7 @@
 {
-  "name": "p5.ble",
+  "name": "p5-ble",
   "version": "0.0.1",
-  "description": "A p5.js library that enables communication between BLE devices and a p5 sketch.",
+  "description": "A javascript library that enables communication between BLE devices and a p5 sketch.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

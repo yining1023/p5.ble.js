@@ -1,10 +1,12 @@
 {
-  "name": "p5-ble",
+  "name": "p5ble",
   "version": "0.0.1",
   "description": "A javascript library that enables communication between BLE devices and a p5 sketch.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rimraf dist",
+    "build": "babel --out-dir dist --ignore *test.js src"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/yining1023/p5.ble.js/issues"
   },
-  "homepage": "https://github.com/yining1023/p5.ble.js#readme"
+  "homepage": "https://github.com/yining1023/p5.ble.js#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "rimraf": "2.6.2"
+  }
 }

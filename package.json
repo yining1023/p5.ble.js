@@ -1,6 +1,6 @@
 {
   "name": "p5ble",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A javascript library that enables communication between BLE devices and a p5 sketch.",
   "main": "dist/p5.ble.js",
   "scripts": {

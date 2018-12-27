@@ -26,46 +26,58 @@ If you want to help develop this library, here are the steps to get started:
     That should output something similar to this:
 
     ```bash
-    Project is running at http://localhost:8080/
-    webpack output is served from /
+    > p5ble@0.0.2 start /Users/yiningshi/dev/p5.ble.js
+    > webpack-dev-server --mode development --config webpack.dev.babel.js
 
-    Hash: 16b80528bf532975b279
-    Version: webpack 2.6.1
-    Time: 4905ms
-      Asset     Size  Chunks                    Chunk Names
-    ml5.js  1.55 MB       0  [emitted]  [big]  main
-    chunk    {0} ml5.js (main) 1.5 MB [entry] [rendered]
-        [9] (webpack)/buildin/global.js 509 bytes {0} [built]
-      [191] ./src/index.js 403 bytes {0} [built]
-      [192] ./~/babel-polyfill/lib/index.js 833 bytes {0} [built]
-      [193] (webpack)-dev-server/client?http://localhost:8080 5.68 kB {0} [built]
-      [196] ./src/ImageNet/index.js 5.63 kB {0} [built]
-      [198] ./src/Lstm/index.js 7.7 kB {0} [built]
-      [200] ./src/NeuralNetwork/index.js 6.8 kB {0} [built]
-      [204] ./~/babel-polyfill/~/regenerator-runtime/runtime.js 24.4 kB {0} [built]
-      [404] ./~/core-js/shim.js 8.18 kB {0} [built]
-      [507] ./~/strip-ansi/index.js 161 bytes {0} [built]
-      [509] ./~/url/url.js 23.3 kB {0} [built]
-      [511] (webpack)-dev-server/client/overlay.js 3.73 kB {0} [built]
-      [512] (webpack)-dev-server/client/socket.js 897 bytes {0} [built]
-      [513] (webpack)/hot/emitter.js 77 bytes {0} [built]
-      [515] multi (webpack)-dev-server/client?http://localhost:8080 babel-polyfill ./src/index.js 52 bytes {0} [built]
-        + 501 hidden modules
-    webpack: Compiled successfully.
+    ℹ ｢wds｣: Project is running at http://localhost:8080/
+    ℹ ｢wds｣: webpack output is served from /
+    ℹ ｢wds｣: Content not from webpack is served from /Users/yiningshi/dev/p5.ble.js/dist
+    ℹ ｢wdm｣: Hash: 93398258fad8f6aeebb2
+    Version: webpack 4.28.2
+    Time: 2108ms
+    Built at: 2018-12-27 12:48:54
+        Asset       Size  Chunks             Chunk Names
+    index.html  177 bytes          [emitted]
+    p5.ble.js    1.7 MiB    main  [emitted]  main
+    Entrypoint main = p5.ble.js
+    [0] multi (webpack)-dev-server/client?http://localhost:8080 babel-polyfill ./src/p5.ble.js 52 bytes {main} [built]
+    [./node_modules/babel-polyfill/lib/index.js] 833 bytes {main} [built]
+    [./node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js]23.9 KiB {main} [built]
+    [./node_modules/core-js/fn/regexp/escape.js] 108 bytes {main} [built]
+    [./node_modules/core-js/shim.js] 8.03 KiB {main} [built]
+    [./node_modules/loglevel/lib/loglevel.js] 7.68 KiB {main} [built]
+    [./node_modules/strip-ansi/index.js] 161 bytes {main} [built]
+    [./node_modules/url/url.js] 22.8 KiB {main} [built]
+    [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080] (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {main} [built]
+    [./node_modules/webpack-dev-server/client/overlay.js] (webpack)-dev-server/client/overlay.js 3.58 KiB {main} [built]
+    [./node_modules/webpack-dev-server/client/socket.js] (webpack)-dev-server/client/socket.js 1.05 KiB {main} [built]
+    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {main} [built]
+    [./node_modules/webpack/hot sync ^\.\/log$] (webpack)/hot sync nonrecursive^\.\/log$ 170 bytes {main} [built]
+    [./node_modules/webpack/hot/emitter.js] (webpack)/hot/emitter.js 75 bytes {main} [built]
+    [./src/p5.ble.js] 2.23 KiB {main} [built]
+        + 341 hidden modules
+    Child html-webpack-plugin for "index.html":
+        1 asset
+        Entrypoint undefined = index.html
+        [./node_modules/html-webpack-plugin/lib/loader.js!./node_modules/html-webpack-plugin/default_index.ejs] 376 bytes {0} [built]
+        [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
+        [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {0} [built]
+        [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {0} [built]
+    ℹ ｢wdm｣: Compiled successfully.
     ```
 
-    If you see this message, it means the project is actively being built by Webpack's `webpack-dev-server`. Any changes you make to any file in the `/src` folder will automatically rebuild the `ml5.js` and `ml5.min.js` libraries as long as the server continues to run.
+    If you see this message, it means the project is actively being built by Webpack's `webpack-dev-server`. Any changes you make to any file in the `/src` folder will automatically rebuild the `p5.ble.js` and `p5.ble.min.js` libraries as long as the server continues to run.
 
 4. Develop!
 
-  Create a new folder called `/experiments` in the project's root folder. Create an `index.html` file inside `/experiments` and add the following:
+  Go to [https://github.com/yining1023/p5-ble-examples](https://github.com/yining1023/p5-ble-examples). Create a new folder called `/yourExample` in the project's `p5_sketches` folder. Create an `index.html` file inside `/yourExample` and add the following:
 
   ```html
   <!DOCTYPE html>
   <html>
   <head>
     <title>Test</title>
-    <script src="http://localhost:8080/p5ble.js"></script>
+    <script src="http://localhost:8080/p5.ble.js"></script>
   </head>
   <body>
 
@@ -77,7 +89,7 @@ If you want to help develop this library, here are the steps to get started:
   </html>
   ```
 
-  This is just a simple `html` file that has a reference to the `ml5` library.
+  This is just a simple `html` file that has a reference to the `p5.ble.js` library.
 
   Next, open the `/src/index.js` file and add this after the last line:
 
@@ -96,40 +108,29 @@ If you want to help develop this library, here are the steps to get started:
   That should output something very similar to the `webpack-dev-server` from step 3 but you'll notice at the end is this line:
 
   ```bash
-  > webpack --config webpack.prod.babel.js
-  > Done in 15.13s.
+    Built at: 2018-12-27 13:08:34
+            Asset     Size  Chunks             Chunk Names
+        p5.ble.js  442 KiB    main  [emitted]  main
+    p5.ble.js.map  355 KiB    main  [emitted]  main
+    Entrypoint main = p5.ble.js p5.ble.js.map
+    [0] multi babel-polyfill ./src/p5.ble.js 40 bytes {main} [built]
+    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {main} [built]
+    [./src/p5.ble.js] 2.23 KiB {main} [built]
+        + 330 hidden modules
+    Hash: 1040a5eace6dd8c8ac17
+    Version: webpack 4.28.2
+    Time: 4180ms
+    Built at: 2018-12-27 13:08:37
+                Asset     Size  Chunks             Chunk Names
+        p5.ble.min.js   94 KiB       0  [emitted]  main
+    p5.ble.min.js.map  427 KiB       0  [emitted]  main
+    Entrypoint main = p5.ble.min.js p5.ble.min.js.map
+    [93] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [130] multi babel-polyfill ./src/p5.ble.js 40 bytes {0} [built]
+    [332] ./src/p5.ble.js 2.23 KiB {0} [built]
+    + 330 hidden modules
   ```
 
   If you see this, it means the library was successfully built and minified.
 
-
-6. (OPTIONAL) Commit your changes. We are using [Commitizen](https://github.com/commitizen/cz-cli) to commit changes. Commitizen is a tool that allows you to specify commits in a more precise way. You can run it instead of your regular `git commit -m 'msg'` with:
-
-  ```bash
-  npm run commit
-  ```
-
-  That will show you an interactive prompt to commit:
-  ```bash
-  ? Select the type of change that you're committing: (Use arrow keys)
-  ❯ feat:     A new feature
-    fix:      A bug fix
-    docs:     Documentation only changes
-    style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-    refactor: A code change that neither fixes a bug nor adds a feature
-    perf:     A code change that improves performance
-    test:     Adding missing tests or correcting existing tests
-  ```
-
-  Just be sure to add files before running commitizen!
-
-7. (OPTIONAL) Push your code and submit a Pull Request!
-
-## Running Unit Tests
-
-WIP
-
-## Additional Resources
-
-- [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
-- [How to Write an Open Source JavaScript Library](https://egghead.io/courses/how-to-write-an-open-source-javascript-library)
+6. (OPTIONAL) Push your code and submit a Pull Request!

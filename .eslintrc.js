@@ -1,0 +1,14 @@
+module.exports = {
+  "extends": "airbnb-base",
+  "globals": {
+    "fetch": false,
+    "document": true
+  },
+  "rules": {
+    "no-console": 0
+  },
+  "env": {
+    "browser": true,
+    "jasmine": true
+  }
+};

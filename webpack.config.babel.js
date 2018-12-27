@@ -13,9 +13,18 @@ export default {
   },
   devtool: "source-map",
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: "babel-loader"
-    }]
+    rules: [
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+      }
+    ]
   }
 };

@@ -16,7 +16,7 @@ If you want to help develop this library, here are the steps to get started:
 
 3. This project is developed using [Webpack](https://webpack.js.org/). Webpack is a module bundler that "bundles" different files into one file. This file is usually called a library.
 
-  Under the `/src` folder there are sub-folders for all `ml5` methods. Before building the library, you can check to see everything is working:
+  Under the `/src` folder there are sub-folders for all `p5ble` methods. Before building the library, you can check to see everything is working:
 
   - Run this command from the root of the project:
     ```bash

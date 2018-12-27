@@ -8,11 +8,11 @@ export default merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     watchContentBase: true,
-    contentBase: join(__dirname, './dist')
+    contentBase: join(__dirname, './dist'),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'p5ble'
-    })
-  ]
-})
+      title: 'p5ble',
+    }),
+  ],
+});

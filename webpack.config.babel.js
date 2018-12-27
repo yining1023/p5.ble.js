@@ -1,30 +1,35 @@
-import {
-  join
-} from "path";
+import { join } from 'path';
 
-const include = join(__dirname, 'src')
+const include = join(__dirname, 'src');
 
 export default {
-  entry: "./src/p5.ble.js",
+  entry: ['babel-polyfill', './src/p5.ble.js'],
   output: {
-    path: join(__dirname, "dist"),
-    libraryTarget: "umd",
-    library: "p5ble"
+    path: join(__dirname, 'dist'),
+    publicPath: '/',
+    libraryTarget: 'umd',
+    filename: 'p5.ble.js',
+    library: 'p5ble',
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
+        loader: 'eslint-loader',
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-      }
-    ]
-  }
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json',
+        include,
+      },
+    ],
+  },
 };

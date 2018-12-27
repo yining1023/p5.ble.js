@@ -30,7 +30,7 @@ or
 
 ## Standalone Examples
 
-You can find a collection of standalone examples in this repository: [https://github.com/yining1023/p5-ble-examples](https://github.com/yining1023/p5-ble-examples) 
+You can find a collection of standalone examples in this repository: [p5-ble-examples](https://github.com/yining1023/p5-ble-examples) 
 
 ## Contributing
 

@@ -7,18 +7,14 @@ p5.ble.js is inspired by [p5.serialport](https://github.com/vanevery/p5.serialpo
 
 ## Usage
 
-Download the [minified](https://unpkg.com/p5ble@0.0.3/dist/p5.ble.min.js), or use the online version and add it to the head section of your HTML document, or install the npm package:
+Download the [minified](https://unpkg.com/p5ble@0.0.3/dist/p5.ble.min.js), or use the online version and add it to the head section of your HTML document:
 
 ```javascript
 <script src="p5.ble.min.js" type="text/javascript"></script>
 ```
 or 
 ```javascript
-<script src="https://unpkg.com/p5ble@0.0.3/dist/p5.ble.js" type="text/javascript"></script>
-```
-or
-```bash
-npm install p5ble
+<script src="https://unpkg.com/p5ble@0.0.3/dist/p5.ble.min.js" type="text/javascript"></script>
 ```
 
 ## Resources

@@ -25,7 +25,7 @@ const connect = (serviceUuid, callback) => {
       callback(null, characteristics);
     })
     .catch((error) => {
-      console.log(`Error: ${error}`);
+      console.error(`Error: ${error}`);
       callback(error);
     });
 };

@@ -5,7 +5,7 @@ import {
 const include = join(__dirname, 'src')
 
 export default {
-  entry: "./src/index.js",
+  entry: "./src/p5.ble.js",
   output: {
     path: join(__dirname, "dist"),
     libraryTarget: "umd",

@@ -2,14 +2,14 @@
   "name": "p5ble",
   "version": "0.0.2",
   "description": "A javascript library that enables communication between BLE devices and a p5 sketch.",
-  "main": "dist/index.js",
+  "main": "dist/p5.ble.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rimraf dist",
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode development --config webpack.dev.babel.js",
     "build": "npm-run-all --parallel build:*",
-    "build:umd": "webpack --output-filename index.js --mode development",
-    "build:umd.min": "webpack --output-filename index.min.js --mode production"
+    "build:umd": "webpack --output-filename p5.ble.js --mode development",
+    "build:umd.min": "webpack --output-filename p5.ble.min.js --mode production"
   },
   "repository": {
     "type": "git",
@@ -40,12 +40,14 @@
     "eslint-loader": "2.0.0",
     "eslint-plugin-import": "2.14.0",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "html-webpack-plugin": "3.2.0",
     "json-loader": "0.5.7",
     "npm-run-all": "4.1.5",
     "rimraf": "2.6.2",
     "webpack": "4.28.2",
     "webpack-cli": "3.1.2",
-    "webpack-dev-server": "3.1.14"
+    "webpack-dev-server": "3.1.14",
+    "webpack-merge": "4.1.5"
   },
   "babel": {
     "presets": [

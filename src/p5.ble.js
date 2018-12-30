@@ -22,7 +22,7 @@ class p5ble {
 
     console.log('Requesting Bluetooth Device...');
 
-    return navigator.bluetooth.requestDevice(options)
+    return callCallback(navigator.bluetooth.requestDevice(options)
       .then((device) => {
         this.device = device;
         console.log(`Got device ${device.name}`);
@@ -41,12 +41,11 @@ class p5ble {
       .then((characteristics) => {
         this.characteristics = characteristics;
         console.log('Got Characteristic');
-        callback(null, characteristics);
+        return characteristics;
       })
       .catch((error) => {
         console.error(`Error: ${error}`);
-        callback(error);
-      });
+      }), callback);
   }
 
   async read(characteristic, callback) {
@@ -57,6 +56,7 @@ class p5ble {
   }
 
   write(characteristic, inputValue) {
+    if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
     const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
     if (!validChar) return console.error('The characteristic does not exist.');
 

@@ -4,6 +4,7 @@
 // https://opensource.org/licenses/MIT
 
 import callCallback from './utils/callcallback';
+import parseData from './utils/parseData';
 
 class p5ble {
   constructor() {
@@ -49,17 +50,25 @@ class p5ble {
       }), callback);
   }
 
-  async read(characteristic, callback) {
+  async read(characteristic, dataTypeOrcallback, cb) {
+    let callback;
+    let dataType;
+    if (typeof dataTypeOrcallback === 'function') {
+      callback = dataTypeOrcallback;
+    } else if (typeof dataTypeOrcallback === 'string') {
+      dataType = dataTypeOrcallback;
+    }
+    if (typeof cb === 'function') {
+      callback = cb;
+    }
+
     if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
     const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
     if (!validChar) return console.error('The characteristic does not exist.');
 
-    return callCallback(characteristic.readValue().then(value => value.getUint8(0)), callback);
+    return callCallback(characteristic.readValue()
+      .then(value => parseData(value, dataType)), callback);
   }
-
-  // readOnChange(characteristic, handleValueChanged) {
-
-  // }
 
   write(characteristic, inputValue) {
     if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
@@ -71,7 +80,7 @@ class p5ble {
     return characteristic.writeValue(bufferToSend);
   }
 
-  async startNotifications(characteristic, handleNotifications) {
+  async startNotifications(characteristic, handleNotifications, dataType) {
     if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
     const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
     if (!validChar) return console.error('The characteristic does not exist.');
@@ -82,9 +91,8 @@ class p5ble {
 
     this.handleNotifications = (event) => {
       const { value } = event.target;
-      // TODO: take care of different data type
-      // https://googlechrome.github.io/samples/web-bluetooth/notifications-async-await.html
-      handleNotifications(value.getUint8(0));
+      const parsedData = parseData(value, dataType);
+      handleNotifications(parsedData);
     };
 
     return characteristic.addEventListener('characteristicvaluechanged', this.handleNotifications);

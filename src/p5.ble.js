@@ -55,6 +55,10 @@ class p5ble {
     return callCallback(characteristic.readValue().then(value => value.getUint8(0)), callback);
   }
 
+  // readOnChange(characteristic, handleValueChanged) {
+
+  // }
+
   write(characteristic, inputValue) {
     if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
     const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
@@ -63,6 +67,37 @@ class p5ble {
     const bufferToSend = Uint8Array.of(inputValue);
     console.log(`Writing ${inputValue} to Characteristic...`);
     return characteristic.writeValue(bufferToSend);
+  }
+
+  // startNotifications(characteristic, handleValueChanged) {
+
+  // }
+
+  // stopNotifications(characteristic) {
+
+  // }
+
+  disconnect() {
+    if (!this.device) return;
+    console.log('Disconnecting from Bluetooth Device...');
+    if (this.device.gatt.connected) {
+      this.device.gatt.disconnect();
+    } else {
+      console.log('> Bluetooth Device is already disconnected');
+    }
+  }
+
+  onDisconnected(handleDisconnected) {
+    if (!this.device) return console.error('There is no device connected.');
+    return this.device.addEventListener('gattserverdisconnected', handleDisconnected);
+  }
+
+  isConnected() {
+    if (!this.device) return false;
+    if (this.device.gatt.connected) {
+      return true;
+    }
+    return false;
   }
 }
 

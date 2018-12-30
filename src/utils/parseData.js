@@ -7,7 +7,6 @@ export default function parseData(data, t, encoding) {
   const type = t ? t.toLowerCase() : 'unit8';
   let result;
   let decoder;
-  console.log('type: ', type);
   switch (type) {
     case 'unit8':
       result = data.getUint8(0);

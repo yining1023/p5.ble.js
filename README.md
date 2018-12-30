@@ -24,7 +24,7 @@ or
 
 - [Getting Started](https://yining1023.github.io/p5ble-website/docs/getstarted)
 - [API Reference](https://yining1023.github.io/p5ble-website/docs/api)
-- [Examples](https://yining1023.github.io/p5ble-website/docs/examples)
+- [Examples](https://yining1023.github.io/p5ble-website/docs/example1)
 - [Tutorials](http://localhost:3000/p5ble-website/blog/)
 
 ## Standalone Examples

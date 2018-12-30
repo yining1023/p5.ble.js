@@ -11,6 +11,7 @@ class p5ble {
     this.server = null;
     this.service = null;
     this.characteristics = [];
+    this.handleNotifications = null;
   }
 
   connect(serviceUuid, callback) {
@@ -49,6 +50,7 @@ class p5ble {
   }
 
   async read(characteristic, callback) {
+    if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
     const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
     if (!validChar) return console.error('The characteristic does not exist.');
 
@@ -69,13 +71,42 @@ class p5ble {
     return characteristic.writeValue(bufferToSend);
   }
 
-  // startNotifications(characteristic, handleValueChanged) {
+  async startNotifications(characteristic, handleNotifications) {
+    if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
+    const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
+    if (!validChar) return console.error('The characteristic does not exist.');
 
-  // }
+    await characteristic.startNotifications();
 
-  // stopNotifications(characteristic) {
+    console.log('> Notifications started');
 
-  // }
+    this.handleNotifications = (event) => {
+      const { value } = event.target;
+      // TODO: take care of different data type
+      // https://googlechrome.github.io/samples/web-bluetooth/notifications-async-await.html
+      handleNotifications(value.getUint8(0));
+    };
+
+    return characteristic.addEventListener('characteristicvaluechanged', this.handleNotifications);
+  }
+
+  async stopNotifications(characteristic) {
+    if (!characteristic || !characteristic.uuid) console.error('The characteristic does not exist.');
+    const validChar = this.characteristics.find(char => char.uuid === characteristic.uuid);
+    if (!validChar) return console.error('The characteristic does not exist.');
+
+    try {
+      await characteristic.stopNotifications();
+
+      if (this.handleNotifications) {
+        console.log('> Notifications stopped');
+        return characteristic.removeEventListener('characteristicvaluechanged', this.handleNotifications);
+      }
+      return console.log('> Notifications stopped');
+    } catch (error) {
+      return console.error(`Error: ${error}`);
+    }
+  }
 
   disconnect() {
     if (!this.device) return;

@@ -1,7 +1,7 @@
 # [p5.ble.js](https://yining1023.github.io/p5ble-website)
 [![MIT License](https://img.shields.io/npm/l/express.svg?style=flat-square&registry_uri=https%3A%2F%2Fregistry.npmjs.com)](https://opensource.org/licenses/MIT) [![Version](https://img.shields.io/npm/v/p5ble.svg?style=flat-square)](https://www.npmjs.com/package/p5ble)
 
-### **Moved to https://github.com/ITPNYU/p5.ble.js**
+## This repo is deprecated, it's moved to [ITPNYU/p5.ble.js](https://github.com/ITPNYU/p5.ble.js)
 
 **_This project is currently in development._**
 

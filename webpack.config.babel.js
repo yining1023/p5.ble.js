@@ -3,7 +3,7 @@ import { join } from 'path';
 const include = join(__dirname, 'src');
 
 export default {
-  entry: ['babel-polyfill', './src/p5.ble.js'],
+  entry: ['idempotent-babel-polyfill', './src/p5.ble.js'],
   output: {
     path: join(__dirname, 'dist'),
     publicPath: '/',
